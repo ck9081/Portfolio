@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta Tags -->
+  <title>Alex Sharma | Frontend Developer & Designer</title>
+  <meta name="description" content="Alex Sharma is a passionate frontend developer specializing in semantic HTML5, accessible web design, and modern UI/UX. Available for freelance and full-time roles." />
+  <meta name="keywords" content="frontend developer, web designer, HTML5, CSS3, JavaScript, accessibility, WCAG, portfolio" />
+  <meta name="author" content="Alex Sharma" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://alexsharma.dev/" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://alexsharma.dev/" />
+  <meta property="og:title" content="Alex Sharma | Frontend Developer & Designer" />
+  <meta property="og:description" content="Crafting accessible, semantic, and beautiful web experiences." />
+  <meta property="og:image" content="https://alexsharma.dev/og-image.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Alex Sharma | Frontend Developer" />
+  <meta name="twitter:description" content="Accessible, semantic web experiences crafted with care." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & Variables ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --clr-bg:        #0e0e10;
+      --clr-surface:   #18181c;
+      --clr-border:    #2a2a30;
+      --clr-accent:    #c8f07a;
+      --clr-accent2:   #7af0c8;
+      --clr-text:      #e8e8ec;
+      --clr-muted:     #888896;
+      --font-display:  'DM Serif Display', Georgia, serif;
+      --font-body:     'DM Sans', system-ui, sans-serif;
+      --max-w:         1100px;
+      --radius:        12px;
+      --transition:    .25s ease;
+    }
+
+    /* Skip link for keyboard users */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      background: var(--clr-accent);
+      color: #000;
+      padding: .5rem 1rem;
+      border-radius: 0 0 var(--radius) var(--radius);
+      font-weight: 600;
+      z-index: 9999;
+      transition: top var(--transition);
+      text-decoration: none;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── Base ── */
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--clr-bg);
+      color: var(--clr-text);
+      font-family: var(--font-body);
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    a { color: var(--clr-accent); text-decoration: none; transition: opacity var(--transition); }
+    a:hover { opacity: .75; }
+    a:focus-visible {
+      outline: 2px solid var(--clr-accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* ── Layout Helpers ── */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ── Header / Nav ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(14,14,16,.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--clr-border);
+    }
+
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: .9rem;
+      padding-bottom: .9rem;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--clr-text);
+    }
+    .logo span { color: var(--clr-accent); }
+
+    nav[aria-label="Primary navigation"] ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav[aria-label="Primary navigation"] a {
+      color: var(--clr-muted);
+      font-size: .9rem;
+      font-weight: 500;
+      letter-spacing: .03em;
+      transition: color var(--transition);
+    }
+    nav[aria-label="Primary navigation"] a:hover,
+    nav[aria-label="Primary navigation"] a[aria-current="page"] {
+      color: var(--clr-accent);
+      opacity: 1;
+    }
+
+    /* ── Hero Section ── */
+    #home {
+      padding: 7rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #home::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,240,122,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(200,240,122,.1);
+      border: 1px solid rgba(200,240,122,.2);
+      color: var(--clr-accent);
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .35rem .9rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow::before { content: '●'; font-size: .5rem; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1}50%{opacity:.3} }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      line-height: 1.05;
+      color: var(--clr-text);
+      margin-bottom: 1.25rem;
+    }
+    h1 em { font-style: italic; color: var(--clr-accent); }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--clr-muted);
+      max-width: 540px;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.6rem;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: .95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform .15s, box-shadow .15s, opacity var(--transition);
+      border: none;
+    }
+    .btn:focus-visible {
+      outline: 2px solid var(--clr-accent);
+      outline-offset: 3px;
+    }
+    .btn:hover { transform: translateY(-2px); opacity: 1; }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: var(--clr-accent);
+      color: #000;
+      box-shadow: 0 0 24px rgba(200,240,122,.25);
+    }
+    .btn-primary:hover { box-shadow: 0 0 36px rgba(200,240,122,.4); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--clr-text);
+      border: 1px solid var(--clr-border);
+    }
+    .btn-outline:hover { border-color: var(--clr-accent); color: var(--clr-accent); }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 4rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--clr-border);
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      color: var(--clr-text);
+      display: block;
+    }
+    .stat-label {
+      font-size: .8rem;
+      color: var(--clr-muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    /* ── Section Shared ── */
+    section { padding: 5rem 0; }
+
+    .section-tag {
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--clr-accent);
+      margin-bottom: .75rem;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--clr-border);
+    }
+
+    /* ── About ── */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .about-text p { color: var(--clr-muted); margin-bottom: 1rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .skills-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-top: 1.5rem;
+    }
+    .skills-list li {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      color: var(--clr-text);
+      padding: .35rem .85rem;
+      border-radius: 999px;
+      font-size: .82rem;
+      font-weight: 500;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-placeholder {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+    }
+    .about-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 12px -12px -12px 12px;
+      border: 1px solid rgba(200,240,122,.25);
+      border-radius: 20px;
+      z-index: -1;
+    }
+
+    /* ── Projects ── */
+    #projects { background: var(--clr-surface); }
+
+    .projects-intro {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    article.card {
+      background: var(--clr-bg);
+      border: 1px solid var(--clr-border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    article.card:hover {
+      border-color: rgba(200,240,122,.4);
+      transform: translateY(-4px);
+    }
+
+    .card-thumb {
+      height: 200px;
+      background: linear-gradient(135deg, #1a1a24, #12121a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      border-bottom: 1px solid var(--clr-border);
+    }
+
+    .card-body { padding: 1.5rem; }
+    .card-tags {
+      display: flex; gap: .5rem; flex-wrap: wrap;
+      margin-bottom: .75rem;
+    }
+    .tag {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--clr-accent2);
+      background: rgba(122,240,200,.08);
+      border: 1px solid rgba(122,240,200,.2);
+      padding: .2rem .6rem;
+      border-radius: 999px;
+    }
+
+    h3 { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: .5rem; }
+
+    .card-desc { color: var(--clr-muted); font-size: .9rem; margin-bottom: 1.25rem; }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--clr-accent);
+    }
+
+    /* ── Contact ── */
+    #contact .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    .contact-info p { color: var(--clr-muted); margin-bottom: 2rem; }
+
+    .contact-links { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .contact-links a {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      color: var(--clr-text);
+      font-weight: 500;
+    }
+    .contact-links .icon {
+      width: 40px; height: 40px;
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    /* ── Contact Form ── */
+    .contact-form {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: 20px;
+      padding: 2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    label {
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--clr-text);
+    }
+    label .required {
+      color: var(--clr-accent);
+      margin-left: .2rem;
+    }
+
+    input, textarea, select {
+      background: var(--clr-bg);
+      border: 1px solid var(--clr-border);
+      color: var(--clr-text);
+      font-family: var(--font-body);
+      font-size: .95rem;
+      padding: .75rem 1rem;
+      border-radius: var(--radius);
+      width: 100%;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      -webkit-appearance: none;
+    }
+
+    input::placeholder, textarea::placeholder { color: var(--clr-muted); }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--clr-accent);
+      box-shadow: 0 0 0 3px rgba(200,240,122,.15);
+    }
+
+    /* ARIA invalid state */
+    input[aria-invalid="true"], textarea[aria-invalid="true"] {
+      border-color: #f07a7a;
+    }
+
+    .error-msg {
+      font-size: .8rem;
+      color: #f09a9a;
+      display: none;
+    }
+    .error-msg[aria-live="polite"] { display: block; min-height: 1.2em; }
+
+    textarea { resize: vertical; min-height: 130px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-submit { margin-top: 1.5rem; width: 100%; justify-content: center; }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      color: var(--clr-accent);
+    }
+    .form-success p { color: var(--clr-muted); margin-top: .5rem; font-size: .9rem; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--clr-surface);
+      border-top: 1px solid var(--clr-border);
+      padding: 2.5rem 0;
+    }
+
+    footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-copy { color: var(--clr-muted); font-size: .85rem; }
+
+    nav[aria-label="Footer navigation"] ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav[aria-label="Footer navigation"] a {
+      color: var(--clr-muted);
+      font-size: .85rem;
+    }
+    nav[aria-label="Footer navigation"] a:hover { color: var(--clr-text); opacity: 1; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      #about .about-grid,
+      #contact .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+      .form-row { grid-template-columns: 1fr; }
+      nav[aria-label="Primary navigation"] ul { gap: 1.25rem; }
+      .hero-stats { gap: 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      nav[aria-label="Primary navigation"] ul {
+        display: none;
+      }
+    }
+
+    /* ── Scroll animations ── */
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity .6s ease, transform .6s ease;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Skip Navigation Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ══════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════ -->
+  <header role="banner">
+    <div class="container">
+      <a href="#home" class="logo" aria-label="Alex Sharma – Home">Alex<span>.</span></a>
+
+      <nav aria-label="Primary navigation">
+        <ul role="list">
+          <li><a href="#home"     aria-current="page">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════
+       MAIN
+  ═══════════════════════════════════════ -->
+  <main id="main-content">
+
+    <!-- ── HERO ── -->
+    <section id="home" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="hero-eyebrow" aria-label="Status: Available for work">Available for Work</div>
+
+        <h1 id="hero-heading">
+          Crafting<br>
+          <em>accessible</em><br>
+          web experiences.
+        </h1>
+
+        <p class="hero-desc">
+          Frontend developer focused on semantic HTML5, WCAG-compliant design, and building
+          interfaces that work beautifully for everyone — regardless of ability or device.
+        </p>
+
+        <div class="btn-group" role="group" aria-label="Primary actions">
+          <a href="#projects" class="btn btn-primary">
+            View Projects
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="#contact" class="btn btn-outline">
+            Get In Touch
+          </a>
+        </div>
+
+        <div class="hero-stats" role="list" aria-label="Experience highlights">
+          <div role="listitem">
+            <span class="stat-num" aria-label="3 years">3+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div role="listitem">
+            <span class="stat-num" aria-label="20 projects">20+</span>
+            <span class="stat-label">Projects Shipped</span>
+          </div>
+          <div role="listitem">
+            <span class="stat-num" aria-label="100 percent Lighthouse score">100</span>
+            <span class="stat-label">Lighthouse Score</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" role="presentation" />
+
+    <!-- ── ABOUT ── -->
+    <section id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <p class="section-tag" aria-hidden="true">About Me</p>
+        <h2 id="about-heading">Developer. Designer.<br>Accessibility Advocate.</h2>
+
+        <div class="about-grid">
+          <div class="about-text fade-in">
+            <p>
+              I'm Alex Sharma, a frontend developer with a passion for building websites that are
+              not just visually compelling but genuinely accessible and inclusive. I believe the
+              web should work for everyone.
+            </p>
+            <p>
+              My work centers on writing clean, semantic HTML5, implementing WCAG 2.1 AA guidelines,
+              and creating interfaces that score perfectly on Lighthouse accessibility audits.
+            </p>
+            <p>
+              When I'm not coding, I contribute to open-source accessibility tooling and speak at
+              local web development meetups.
+            </p>
+
+            <ul class="skills-list" role="list" aria-label="Technical skills">
+              <li>HTML5</li>
+              <li>CSS3 / SASS</li>
+              <li>JavaScript (ES6+)</li>
+              <li>WCAG 2.1</li>
+              <li>ARIA</li>
+              <li>React</li>
+              <li>Node.js</li>
+              <li>Figma</li>
+              <li>Git</li>
+              <li>Lighthouse</li>
+            </ul>
+          </div>
+
+          <div class="about-img-wrap fade-in" aria-hidden="true">
+            <div class="about-img-placeholder" role="img" aria-label="Profile photo placeholder">
+              👨‍💻
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" role="presentation" />
+
+    <!-- ── PROJECTS ── -->
+    <section id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="projects-intro">
+          <div>
+            <p class="section-tag" aria-hidden="true">Portfolio</p>
+            <h2 id="projects-heading">Selected Work</h2>
+          </div>
+          <a href="#contact" class="btn btn-outline" aria-label="Inquire about custom work">Hire Me</a>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+
+          <!-- Project 1 -->
+          <article class="card fade-in" aria-labelledby="proj1-title">
+            <div class="card-thumb" aria-hidden="true">🛒</div>
+            <div class="card-body">
+              <div class="card-tags" role="list" aria-label="Technologies used">
+                <span class="tag" role="listitem">React</span>
+                <span class="tag" role="listitem">Accessibility</span>
+              </div>
+              <h3 id="proj1-title">ShopEasy Storefront</h3>
+              <p class="card-desc">
+                A fully accessible e-commerce UI with keyboard navigation, ARIA live regions
+                for cart updates, and 100/100 Lighthouse score.
+              </p>
+              <a href="#" class="card-link" aria-label="View ShopEasy Storefront project">
+                View Project <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="card fade-in" aria-labelledby="proj2-title">
+            <div class="card-thumb" aria-hidden="true">📊</div>
+            <div class="card-body">
+              <div class="card-tags" role="list" aria-label="Technologies used">
+                <span class="tag" role="listitem">HTML5</span>
+                <span class="tag" role="listitem">D3.js</span>
+              </div>
+              <h3 id="proj2-title">DataViz Dashboard</h3>
+              <p class="card-desc">
+                Interactive data visualization dashboard with accessible SVG charts, ARIA
+                descriptions for all chart data, and reduced-motion support.
+              </p>
+              <a href="#" class="card-link" aria-label="View DataViz Dashboard project">
+                View Project <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="card fade-in" aria-labelledby="proj3-title">
+            <div class="card-thumb" aria-hidden="true">📰</div>
+            <div class="card-body">
+              <div class="card-tags" role="list" aria-label="Technologies used">
+                <span class="tag" role="listitem">HTML5</span>
+                <span class="tag" role="listitem">CSS Grid</span>
+              </div>
+              <h3 id="proj3-title">NewsHub Portal</h3>
+              <p class="card-desc">
+                A semantic news portal using proper article, section, aside, and time elements
+                for excellent SEO and screen reader support.
+              </p>
+              <a href="#" class="card-link" aria-label="View NewsHub Portal project">
+                View Project <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" role="presentation" />
+
+    <!-- ── CONTACT ── -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <p class="section-tag" aria-hidden="true">Get In Touch</p>
+        <h2 id="contact-heading">Let's Work Together</h2>
+
+        <div class="contact-wrap">
+          <!-- Contact Info -->
+          <aside aria-label="Contact information">
+            <p>
+              I'm open to freelance projects, full-time roles, and collaboration on
+              accessibility-focused initiatives. Drop me a message!
+            </p>
+
+            <ul class="contact-links" role="list" aria-label="Ways to reach me">
+              <li>
+                <a href="mailto:alex@alexsharma.dev" aria-label="Send email to alex@alexsharma.dev">
+                  <span class="icon" aria-hidden="true">✉️</span>
+                  alex@alexsharma.dev
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+                   aria-label="GitHub profile (opens in new tab)">
+                  <span class="icon" aria-hidden="true">🐙</span>
+                  github.com/alexsharma
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+                   aria-label="LinkedIn profile (opens in new tab)">
+                  <span class="icon" aria-hidden="true">💼</span>
+                  linkedin.com/in/alexsharma
+                </a>
+              </li>
+            </ul>
+          </aside>
+
+          <!-- Contact Form -->
+          <div>
+            <div id="form-success" class="form-success" role="alert" aria-live="polite" aria-atomic="true">
+              <p style="font-size:2.5rem" aria-hidden="true">✅</p>
+              <h3>Message Sent!</h3>
+              <p>Thanks for reaching out. I'll get back to you within 1–2 business days.</p>
+            </div>
+
+            <form
+              id="contact-form"
+              class="contact-form"
+              novalidate
+              aria-labelledby="contact-heading"
+            >
+              <div class="form-row">
+                <!-- First Name -->
+                <div class="form-group">
+                  <label for="first-name">
+                    First Name<span class="required" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="first-name"
+                    name="first-name"
+                    autocomplete="given-name"
+                    required
+                    aria-required="true"
+                    aria-describedby="first-name-error"
+                    placeholder="Alex"
+                  />
+                  <span id="first-name-error" class="error-msg" aria-live="polite" role="alert"></span>
+                </div>
+
+                <!-- Last Name -->
+                <div class="form-group">
+                  <label for="last-name">
+                    Last Name<span class="required" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="last-name"
+                    name="last-name"
+                    autocomplete="family-name"
+                    required
+                    aria-required="true"
+                    aria-describedby="last-name-error"
+                    placeholder="Sharma"
+                  />
+                  <span id="last-name-error" class="error-msg" aria-live="polite" role="alert"></span>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="form-group">
+                <label for="email">
+                  Email Address<span class="required" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                  aria-required="true"
+                  aria-describedby="email-error"
+                  placeholder="you@example.com"
+                />
+                <span id="email-error" class="error-msg" aria-live="polite" role="alert"></span>
+              </div>
+
+              <!-- Subject -->
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  autocomplete="off"
+                  placeholder="Project Inquiry / Collaboration..."
+                />
+              </div>
+
+              <!-- Message -->
+              <div class="form-group">
+                <label for="message">
+                  Message<span class="required" aria-hidden="true">*</span>
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  aria-required="true"
+                  aria-describedby="message-error"
+                  placeholder="Tell me about your project..."
+                ></textarea>
+                <span id="message-error" class="error-msg" aria-live="polite" role="alert"></span>
+              </div>
+
+              <button type="submit" class="btn btn-primary form-submit">
+                Send Message
+                <span aria-hidden="true">→</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer role="contentinfo">
+    <div class="container">
+      <p class="footer-copy">
+        <small>© <time datetime="2026">2026</time> Alex Sharma. Built with semantic HTML5 &amp; care.</small>
+      </p>
+
+      <nav aria-label="Footer navigation">
+        <ul role="list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════════ -->
+  <script>
+    /* ── Scroll-based fade-in ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    /* ── Active nav link on scroll ── */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav[aria-label="Primary navigation"] a');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            const isCurrent = link.getAttribute('href') === '#' + entry.target.id;
+            link.setAttribute('aria-current', isCurrent ? 'page' : 'false');
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+
+    sections.forEach(s => navObserver.observe(s));
+
+    /* ── Contact Form Validation & Submit ── */
+    const form = document.getElementById('contact-form');
+    const successBox = document.getElementById('form-success');
+
+    function showError(inputId, errorId, message) {
+      const input = document.getElementById(inputId);
+      const error = document.getElementById(errorId);
+      input.setAttribute('aria-invalid', 'true');
+      error.textContent = message;
+      error.style.display = 'block';
+    }
+
+    function clearError(inputId, errorId) {
+      const input = document.getElementById(inputId);
+      const error = document.getElementById(errorId);
+      input.setAttribute('aria-invalid', 'false');
+      error.textContent = '';
+      error.style.display = 'none';
+    }
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      let valid = true;
+
+      const firstName = document.getElementById('first-name').value.trim();
+      const lastName  = document.getElementById('last-name').value.trim();
+      const email     = document.getElementById('email').value.trim();
+      const message   = document.getElementById('message').value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!firstName) {
+        showError('first-name', 'first-name-error', 'Please enter your first name.');
+        valid = false;
+      } else clearError('first-name', 'first-name-error');
+
+      if (!lastName) {
+        showError('last-name', 'last-name-error', 'Please enter your last name.');
+        valid = false;
+      } else clearError('last-name', 'last-name-error');
+
+      if (!email || !emailRegex.test(email)) {
+        showError('email', 'email-error', 'Please enter a valid email address.');
+        valid = false;
+      } else clearError('email', 'email-error');
+
+      if (!message) {
+        showError('message', 'message-error', 'Please enter your message.');
+        valid = false;
+      } else clearError('message', 'message-error');
+
+      if (valid) {
+        form.style.display = 'none';
+        successBox.style.display = 'block';
+        successBox.focus();
+      } else {
+        // Focus the first invalid field for keyboard users
+        const firstInvalid = form.querySelector('[aria-invalid="true"]');
+        if (firstInvalid) firstInvalid.focus();
+      }
+    });
+
+    /* ── Live validation on blur ── */
+    document.getElementById('first-name').addEventListener('blur', function() {
+      if (!this.value.trim()) showError('first-name', 'first-name-error', 'Please enter your first name.');
+      else clearError('first-name', 'first-name-error');
+    });
+    document.getElementById('last-name').addEventListener('blur', function() {
+      if (!this.value.trim()) showError('last-name', 'last-name-error', 'Please enter your last name.');
+      else clearError('last-name', 'last-name-error');
+    });
+    document.getElementById('email').addEventListener('blur', function() {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!this.value.trim() || !emailRegex.test(this.value.trim()))
+        showError('email', 'email-error', 'Please enter a valid email address.');
+      else clearError('email', 'email-error');
+    });
+    document.getElementById('message').addEventListener('blur', function() {
+      if (!this.value.trim()) showError('message', 'message-error', 'Please enter your message.');
+      else clearError('message', 'message-error');
+    });
+  </script>
+</body>
+</html>
